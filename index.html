@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DMT Tech | Redes, segurança e infraestrutura para empresas</title>
+<meta name="description" content="Redes, firewall, monitoramento e suporte técnico para pequenas e médias empresas.">
+<meta property="og:title" content="DMT Tech | Redes, segurança e infraestrutura">
+<meta property="og:description" content="Sua empresa conectada, protegida e sob controle.">
+<meta name="theme-color" content="#0f2340">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1c3d6e;--deep:#0f2340;--ink:#0b1b30;--cyan:#2f8fbf;--cyan-lt:#8fd0ec;--cyan-dk:#1f6f98;
+  --ground:#f4f7fa;--line:#d6e0ea;--text:#3a4a5e;--muted-dk:#c3d2e3;--tint:#e6f2f9;--ok:#11683f;
+  --disp:'Sora','IBM Plex Sans',system-ui,sans-serif;--body:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
+  --pad:clamp(20px,5.5vw,80px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:var(--body);background:var(--ground);color:var(--ink);line-height:1.5}
+img,svg{max-width:100%}
+a{color:var(--navy)}
+:focus-visible{outline:3px solid var(--cyan-lt);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1440px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.mono{font-family:var(--mono)}
+.disp{font-family:var(--disp)}
+.dots{background-image:radial-gradient(rgba(143,208,236,.16) 1px,transparent 1px);background-size:28px 28px}
+.eyebrow{font-family:var(--mono);font-size:14px;letter-spacing:2px;color:var(--cyan-dk);margin:0}
+.dark .eyebrow{color:var(--cyan-lt)}
+h1,h2,h3{font-family:var(--disp);margin:0;color:var(--deep)}
+h2{font-size:clamp(30px,4vw,48px);line-height:1.1;font-weight:700;letter-spacing:-1px}
+h3{font-size:22px;font-weight:600}
+p{margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 26px;border-radius:8px;font-weight:600;font-size:17px;text-decoration:none;border:0;cursor:pointer;font-family:var(--body)}
+.btn-cyan{background:var(--cyan);color:#0a1a30}.btn-cyan:hover{background:#3aa6d6}
+.btn-ghost{border:1px solid rgba(143,208,236,.5);color:#fff;font-weight:500}.btn-ghost:hover{background:rgba(143,208,236,.1)}
+.btn-deep{background:var(--deep);color:#fff;width:100%}.btn-deep:hover{background:var(--navy)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:var(--deep);border-bottom:1px solid rgba(143,208,236,.18)}
+.nav .wrap{height:84px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand span{font-family:var(--disp);font-size:24px;font-weight:700;color:#fff;letter-spacing:-.5px}
+.brand b{color:var(--cyan-lt);font-weight:700}
+.links{display:flex;align-items:center;gap:40px}
+.links a{color:#d5e1ee;text-decoration:none;font-size:16px}.links a:hover{color:#fff}
+.links .btn{min-height:46px;padding:0 22px;font-size:16px;color:#0a1a30}
+.menu-btn{display:none;width:44px;height:44px;border:1px solid rgba(143,208,236,.4);border-radius:8px;background:transparent;cursor:pointer;align-items:center;justify-content:center}
+
+/* HERO */
+.hero{background-color:var(--deep);color:#fff}
+.hero .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px;padding-top:96px;padding-bottom:80px;min-height:640px}
+.hero-copy{display:flex;flex-direction:column;gap:28px;padding-top:24px}
+.hero h1{font-size:clamp(38px,5vw,64px);line-height:1.05;font-weight:700;color:#fff;letter-spacing:-1.5px}
+.hero-copy>p:not(.eyebrow){font-size:20px;line-height:1.6;color:var(--muted-dk);max-width:540px}
+.ctas{display:flex;gap:16px;flex-wrap:wrap;padding-top:8px}
+.hero-art{position:relative;min-height:520px}
+.hero-art svg.topo{position:absolute;inset:0;width:100%;height:auto}
+.status{position:absolute;right:0;bottom:0;width:300px;padding:20px;border-radius:12px;background:#fff;color:var(--ink);box-shadow:0 20px 50px rgba(5,15,30,.4);display:flex;flex-direction:column;gap:12px}
+.status-head{display:flex;justify-content:space-between;align-items:center}
+.status-head .mono{font-size:12px;letter-spacing:1px;color:#4a5a6e}
+.live{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--ok)}
+.live i{width:8px;height:8px;border-radius:4px;background:#1a9a5c;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.row{display:flex;justify-content:space-between;font-size:15px}.row .mono{color:var(--ok)}
+.status hr{border:0;height:1px;background:#e2e8ef;margin:2px 0}
+.status small{font-size:13px;color:#4a5a6e}
+
+/* FAIXA */
+.strip{background:var(--navy)}
+.strip .wrap{min-height:112px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:24px;padding-bottom:24px}
+.strip p{font-family:var(--disp);font-size:22px;font-weight:600;color:#fff}
+.strip ul{display:flex;gap:40px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.strip li{font-family:var(--mono);font-size:15px;color:#d5e1ee}
+
+/* SEÇÕES */
+section.block .wrap{padding-top:120px;padding-bottom:120px}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:64px;margin-bottom:56px}
+.head>div{display:flex;flex-direction:column;gap:16px;max-width:640px}
+.head>p{font-size:18px;line-height:1.6;color:var(--text);max-width:440px}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.card{padding:32px;border-radius:14px;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;gap:20px}
+.card-top{display:flex;justify-content:space-between;align-items:center}
+.ico{width:52px;height:52px;border-radius:12px;background:var(--tint);display:flex;align-items:center;justify-content:center}
+.port{font-family:var(--mono);font-size:13px;color:#5a6a7e}
+.card p{font-size:16px;line-height:1.6;color:var(--text)}
+.card ul{list-style:none;margin:0;padding:4px 0 0;display:flex;flex-direction:column;gap:10px}
+.card li{font-size:15px}.card li::before{content:"— ";color:var(--cyan-dk)}
+
+/* XDR */
+.xdr{background-color:var(--ink)}
+.xdr .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:80px;align-items:center;padding-top:112px;padding-bottom:112px}
+.xdr-copy{display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.badge{font-family:var(--mono);font-size:12px;padding:5px 10px;border-radius:999px;border:1px solid var(--cyan-lt);color:var(--cyan-lt)}
+.xdr h2{color:#fff;font-size:clamp(30px,4.2vw,52px);line-height:1.08}
+.xdr-copy>p{font-size:18px;line-height:1.65;color:var(--muted-dk);max-width:560px}
+.steps-dark{display:flex;flex-direction:column;gap:16px;list-style:none;margin:0;padding:0}
+.steps-dark li{display:flex;align-items:center;gap:20px;padding:24px;border-radius:12px;background:rgba(28,61,110,.55);border:1px solid rgba(143,208,236,.25)}
+.steps-dark .n{font-family:var(--mono);font-size:28px;font-weight:500;color:var(--cyan-lt);width:48px;flex-shrink:0}
+.steps-dark strong{display:block;font-family:var(--disp);font-size:20px;font-weight:600;color:#fff}
+.steps-dark span{font-size:15px;color:var(--muted-dk)}
+
+/* PROCESSO */
+.process{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;list-style:none;margin:64px 0 0;padding:0}
+.process::before{content:"";position:absolute;left:40px;right:40px;top:39px;height:2px;background:#b9d3e6}
+.process li{position:relative;display:flex;flex-direction:column;gap:20px}
+.dot{width:80px;height:80px;border-radius:40px;background:var(--navy);color:#fff;font-family:var(--mono);font-size:22px;font-weight:500;display:flex;align-items:center;justify-content:center;border:6px solid var(--ground)}
+.process li:last-child .dot{background:var(--cyan);color:#0a1a30}
+.process p{font-size:16px;line-height:1.6;color:var(--text)}
+
+/* SOBRE */
+.about .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:80px;align-items:center;padding-top:0;padding-bottom:120px}
+.about-copy{display:flex;flex-direction:column;gap:20px}
+.about-copy h2{font-size:clamp(30px,3.6vw,44px)}
+.about-copy p:not(.eyebrow){font-size:18px;line-height:1.65;color:var(--text)}
+.team{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.person{padding:24px;border-radius:14px;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
+.photo{aspect-ratio:1/1;border-radius:10px;background:#e6eef5;display:flex;align-items:center;justify-content:center;font-size:14px;color:#4a5a6e;object-fit:cover;width:100%}
+.initials{font-family:var(--disp);font-size:56px;font-weight:700;color:var(--navy);background:var(--tint)}
+.person strong{font-family:var(--disp);font-size:20px;font-weight:600;color:var(--deep);display:block}
+.person span{font-size:15px;color:var(--text)}
+
+/* CONTATO */
+.contact{background:var(--navy)}
+.contact .wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:80px;padding-top:104px;padding-bottom:104px}
+.contact-copy{display:flex;flex-direction:column;gap:24px}
+.contact h2{color:#fff}
+.contact-copy>p:not(.eyebrow){font-size:18px;line-height:1.65;color:#d5e1ee}
+.channels{display:flex;flex-direction:column;gap:14px;padding-top:12px}
+.channels a{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-size:17px}
+.channels a:hover{text-decoration:underline}
+form{padding:36px;border-radius:16px;background:#fff;display:flex;flex-direction:column;gap:18px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+label{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:500}
+input,textarea{font:inherit;font-size:16px;min-height:48px;padding:10px 14px;border-radius:8px;border:1px solid #b6c4d3;background:#fff;color:var(--ink)}
+textarea{resize:vertical;min-height:110px}
+input:focus,textarea:focus{border-color:var(--cyan-dk);outline:2px solid rgba(47,143,191,.3)}
+.form-note{font-size:13px;color:#4a5a6e}
+
+/* FOOTER */
+footer{background:var(--ink)}
+footer .wrap{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;padding-top:48px;padding-bottom:48px}
+footer .brand span{font-size:22px}
+footer p{font-size:14px;color:#b8c7d9}
+footer .right{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+
+/* RESPONSIVO */
+@media (max-width:1100px){
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .head{flex-direction:column;align-items:flex-start;gap:20px}
+}
+@media (max-width:900px){
+  .menu-btn{display:flex}
+  .links{display:none;position:absolute;top:84px;left:0;right:0;background:var(--deep);flex-direction:column;align-items:stretch;gap:0;padding:8px var(--pad) 20px;border-bottom:1px solid rgba(143,208,236,.18)}
+  .links.open{display:flex}
+  .links a{padding:14px 0;border-bottom:1px solid rgba(143,208,236,.12)}
+  .links .btn{margin-top:12px;border:0}
+  .hero .wrap,.xdr .wrap,.about .wrap,.contact .wrap{grid-template-columns:1fr;gap:48px}
+  .hero .wrap{padding-top:56px;padding-bottom:56px;min-height:0}
+  .hero-art{min-height:0;display:flex;flex-direction:column;gap:0}
+  .hero-art svg.topo,.hero-art .core{display:none}
+  .status{position:static;width:100%}
+  section.block .wrap{padding-top:72px;padding-bottom:72px}
+  .about .wrap{padding-bottom:72px}
+  .process{grid-template-columns:1fr;gap:24px}
+  .process::before{left:39px;right:auto;top:40px;bottom:40px;width:2px;height:auto}
+  .process li{flex-direction:row;align-items:flex-start;gap:20px}
+  .process li>div{padding-top:10px;display:flex;flex-direction:column;gap:8px}
+  .strip p{font-size:18px}.strip ul{gap:20px}
+}
+@media (max-width:600px){
+  .cards,.two,.team{grid-template-columns:1fr}
+  .ctas .btn{width:100%}
+  form{padding:24px}
+  footer .right{align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.live i{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#topo" aria-label="DMT Tech, início">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <g stroke="#8fd0ec" stroke-width="2"><line x1="8" y1="28" x2="20" y2="10"/><line x1="20" y1="10" x2="32" y2="26"/><line x1="8" y1="28" x2="32" y2="26"/><line x1="20" y1="10" x2="20" y2="22"/></g>
+        <circle cx="20" cy="10" r="5" fill="#2f8fbf"/><circle cx="8" cy="28" r="4.5" fill="#fff"/><circle cx="32" cy="26" r="4.5" fill="#fff"/><circle cx="20" cy="22" r="3" fill="#2f8fbf"/>
+      </svg>
+      <span>DMT<b> Tech</b></span>
+    </a>
+    <button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="links" id="menu" aria-label="Principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#xdr">Auto XDR</a>
+      <a href="#processo">Como trabalhamos</a>
+      <a href="#sobre">Quem somos</a>
+      <a class="btn btn-cyan" href="#contato">Fale com a gente</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="topo" class="hero dots dark">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">// REDES · SEGURANÇA · INFRAESTRUTURA</p>
+      <h1>Sua empresa conectada, protegida e sob controle.</h1>
+      <p>Redes, firewall, monitoramento e suporte técnico para pequenas e médias empresas. Do cabo ao alerta, cuidamos da infraestrutura para você cuidar do negócio.</p>
+      <div class="ctas">
+        <a class="btn btn-cyan" href="#contato">Solicitar diagnóstico gratuito</a>
+        <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg class="topo" viewBox="0 0 620 520" fill="none" aria-hidden="true">
+        <g stroke="#2f8fbf" stroke-opacity=".55" stroke-width="1.5">
+          <line x1="310" y1="90" x2="130" y2="230"/><line x1="310" y1="90" x2="500" y2="210"/><line x1="130" y1="230" x2="210" y2="420"/><line x1="500" y1="210" x2="430" y2="430"/><line x1="210" y1="420" x2="430" y2="430"/><line x1="310" y1="90" x2="320" y2="290"/><line x1="320" y1="290" x2="130" y2="230"/><line x1="320" y1="290" x2="500" y2="210"/><line x1="320" y1="290" x2="210" y2="420"/><line x1="320" y1="290" x2="430" y2="430"/><line x1="500" y1="210" x2="590" y2="90" stroke-dasharray="4 6"/><line x1="130" y1="230" x2="30" y2="330" stroke-dasharray="4 6"/>
+        </g>
+        <circle cx="320" cy="290" r="44" fill="#1c3d6e" stroke="#2f8fbf" stroke-width="2"/>
+        <text x="320" y="295" text-anchor="middle" fill="#fff" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="500">CORE</text>
+        <circle cx="310" cy="90" r="16" fill="#2f8fbf"/><circle cx="130" cy="230" r="14" fill="#fff"/><circle cx="500" cy="210" r="14" fill="#fff"/><circle cx="210" cy="420" r="12" fill="#2f8fbf"/><circle cx="430" cy="430" r="12" fill="#fff"/><circle cx="590" cy="90" r="6" fill="#8fd0ec"/><circle cx="30" cy="330" r="6" fill="#8fd0ec"/>
+      </svg>
+      <div class="status" aria-label="Exemplo de painel de status da rede">
+        <div class="status-head"><span class="mono">STATUS DA REDE</span><span class="live"><i></i>Operacional</span></div>
+        <div class="row"><span>Firewall</span><span class="mono">OK</span></div>
+        <div class="row"><span>Link principal</span><span class="mono">OK</span></div>
+        <div class="row"><span>Link de backup</span><span class="mono">OK</span></div>
+        <div class="row"><span>Backup do servidor</span><span class="mono">OK</span></div>
+        <hr>
+        <small>Monitorado com Zabbix</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip" aria-label="Área de atendimento">
+  <div class="wrap">
+    <p>Atendimento presencial e remoto</p>
+    <ul><li>Redes</li><li>Firewall</li><li>Monitoramento</li><li>Suporte</li></ul>
+  </div>
+</section>
+
+<section id="servicos" class="block">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow">// SERVIÇOS</p>
+        <h2>Tudo que sustenta a sua operação, em um só parceiro.</h2>
+      </div>
+      <p>Cada serviço funciona sozinho, mas eles foram pensados para trabalhar juntos: rede bem feita, protegida e observada o tempo todo.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="card-top"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c3d6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v5M5 17v-2.5h14V17M12 12v2.5"/></svg></div><span class="port">PORTA 01</span></div>
+        <h3>Configuração de redes</h3>
+        <p>Projeto, organização e configuração da rede cabeada e Wi-Fi da sua empresa.</p>
+        <ul><li>Switches, VLANs e roteamento</li><li>Wi-Fi corporativo e de visitantes</li><li>Failover entre links de internet</li></ul>
+      </article>
+      <article class="card">
+        <div class="card-top"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c3d6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></div><span class="port">PORTA 02</span></div>
+        <h3>Firewall e segurança</h3>
+        <p>Proteção de perímetro, acesso remoto seguro e regras que fazem sentido para o seu negócio.</p>
+        <ul><li>Implantação e ajuste de firewall</li><li>VPN para filiais e home office</li><li>Políticas de acesso e filtragem</li></ul>
+      </article>
+      <article class="card">
+        <div class="card-top"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c3d6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M6 12h3l2-4 2 6 2-3h3M8 21h8M12 17v4"/></svg></div><span class="port">PORTA 03</span></div>
+        <h3>Monitoramento</h3>
+        <p>A gente fica de olho na sua infraestrutura e age antes do problema virar parada.</p>
+        <ul><li>Monitoramento com Zabbix</li><li>Alertas de link, servidor e nobreak</li><li>Painéis e relatórios mensais</li></ul>
+      </article>
+      <article class="card">
+        <div class="card-top"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c3d6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="14" width="5" height="7" rx="1.5"/><rect x="17" y="14" width="5" height="7" rx="1.5"/><path d="M19.5 21c0 1-2 2-5 2"/></svg></div><span class="port">PORTA 04</span></div>
+        <h3>Suporte técnico</h3>
+        <p>Atendimento direto com quem entende, sem fila de call center e sem enrolação.</p>
+        <ul><li>Suporte remoto e presencial</li><li>Contratos mensais ou avulsos</li><li>Documentação da sua rede</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="xdr" class="xdr dots dark">
+  <div class="wrap">
+    <div class="xdr-copy">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><p class="eyebrow">// PRODUTO</p><span class="badge">EM DESENVOLVIMENTO</span></div>
+      <h2>Auto XDR: detectar, correlacionar e responder. Sozinho.</h2>
+      <p>Estamos construindo uma plataforma própria que cruza eventos do firewall, dos endpoints e do monitoramento para identificar ameaças e disparar a resposta automaticamente, sem depender de alguém olhando a tela.</p>
+      <a class="btn btn-cyan" href="#contato">Quero acompanhar o lançamento</a>
+    </div>
+    <ol class="steps-dark">
+      <li><span class="n">01</span><div><strong>Coleta</strong><span>Logs e eventos de toda a infraestrutura em um só lugar.</span></div></li>
+      <li><span class="n">02</span><div><strong>Correlação</strong><span>Sinais soltos viram um incidente com contexto.</span></div></li>
+      <li><span class="n">03</span><div><strong>Resposta automática</strong><span>Bloqueio, isolamento e alerta, na hora.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="processo" class="block">
+  <div class="wrap">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:720px">
+      <p class="eyebrow">// COMO TRABALHAMOS</p>
+      <h2>Do diagnóstico ao monitoramento contínuo.</h2>
+    </div>
+    <ol class="process">
+      <li><span class="dot">01</span><div><h3>Diagnóstico</h3><p>Visitamos, mapeamos a rede e apontamos riscos e gargalos.</p></div></li>
+      <li><span class="dot">02</span><div><h3>Projeto</h3><p>Proposta clara, com o que fazer, quanto custa e em quanto tempo.</p></div></li>
+      <li><span class="dot">03</span><div><h3>Implantação</h3><p>Executamos com o mínimo de impacto no seu dia a dia e documentamos tudo.</p></div></li>
+      <li><span class="dot">04</span><div><h3>Monitoramento</h3><p>Seguimos acompanhando, com alertas e suporte quando precisar.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="sobre" class="about">
+  <div class="wrap">
+    <div class="about-copy">
+      <p class="eyebrow">// QUEM SOMOS</p>
+      <h2>Dois técnicos de infraestrutura. Um compromisso com a sua rede.</h2>
+      <p>A DMT Tech nasceu da união de Tiburski e De Marchi, profissionais que vivem redes, firewall e monitoramento no dia a dia. Você fala direto com quem executa.</p>
+    </div>
+    <div class="team">
+      <div class="person">
+        <!-- Troque pela foto: <img class="photo" src="img/gustavo.jpg" alt="Gustavo Tiburski"> -->
+        <div class="photo initials">GT</div>
+        <div><strong>Gustavo Tiburski</strong><span>Sócio fundador</span></div>
+      </div>
+      <div class="person">
+        <!-- Troque pela foto: <img class="photo" src="img/dionatha.jpg" alt="Dionatha De Marchi"> -->
+        <div class="photo initials">DM</div>
+        <div><strong>Dionatha De Marchi</strong><span>Sócio fundador</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contato" class="contact dark">
+  <div class="wrap">
+    <div class="contact-copy">
+      <p class="eyebrow">// CONTATO</p>
+      <h2>Vamos olhar a sua rede juntos?</h2>
+      <p>Conte rapidinho o cenário da sua empresa. A gente retorna para agendar um diagnóstico sem compromisso.</p>
+      <div class="channels">
+        <a id="wa-link" hidden href="#" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8fd0ec" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.5A9 9 0 1 1 21 12z"/></svg>WhatsApp</a>
+        <a href="mailto:contato@dmttech.com.br"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8fd0ec" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>contato@dmttech.com.br</a>
+        <a href="https://instagram.com/dmt.tech" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8fd0ec" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg>@dmt.tech</a>
+      </div>
+    </div>
+    <form id="lead" novalidate>
+      <div class="two">
+        <label>Seu nome<input name="nome" type="text" autocomplete="name" required></label>
+        <label>Empresa<input name="empresa" type="text" autocomplete="organization"></label>
+      </div>
+      <div class="two">
+        <label>WhatsApp<input name="whats" type="tel" autocomplete="tel" inputmode="tel" required></label>
+        <label>Nº de computadores<input name="pcs" type="text" inputmode="numeric"></label>
+      </div>
+      <label>O que está acontecendo?<textarea name="msg" rows="4"></textarea></label>
+      <button class="btn btn-deep" type="submit">Enviar e agendar diagnóstico</button>
+      <p class="form-note" id="form-note" aria-live="polite">Ao enviar, abrimos seu aplicativo de mensagem com o texto pronto.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <a class="brand" href="#topo"><span>DMT<b> Tech</b></span></a>
+      <p>Redes · Segurança · Infraestrutura</p>
+    </div>
+    <div class="right">
+      <p>© <span id="ano">2026</span> DMT Tech. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // >>> Quando tiver o WhatsApp da empresa, coloque aqui (só números: 55 + DDD + número, ex.: '5554999999999').
+  // Enquanto estiver vazio, o formulário envia por e-mail e o link de WhatsApp fica oculto.
+  const WHATSAPP = '';
+  const EMAIL = 'contato@dmttech.com.br';
+  if (WHATSAPP) { const w = document.getElementById('wa-link'); w.href = 'https://wa.me/' + WHATSAPP; w.hidden = false; }
+
+  document.getElementById('ano').textContent = new Date().getFullYear();
+
+  const btn = document.querySelector('.menu-btn');
+  const menu = document.getElementById('menu');
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    btn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+  }));
+
+  document.getElementById('lead').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const f = e.target, note = document.getElementById('form-note');
+    const nome = f.nome.value.trim(), whats = f.whats.value.trim();
+    if (!nome || !whats) { note.textContent = 'Preencha seu nome e WhatsApp para continuar.'; (nome ? f.whats : f.nome).focus(); return; }
+    const txt = `Olá, DMT Tech! Sou ${nome}${f.empresa.value ? ' da ' + f.empresa.value.trim() : ''}.\n` +
+      (f.pcs.value ? `Temos ${f.pcs.value.trim()} computadores.\n` : '') +
+      (f.msg.value ? `${f.msg.value.trim()}\n` : '') +
+      `Meu contato: ${whats}. Gostaria de agendar um diagnóstico.`;
+    if (WHATSAPP) {
+      window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(txt)}`, '_blank', 'noopener');
+      note.textContent = 'Abrimos o WhatsApp com a sua mensagem. É só tocar em enviar.';
+    } else {
+      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent('Diagnóstico: ' + nome)}&body=${encodeURIComponent(txt)}`;
+      note.textContent = 'Abrimos seu e-mail com a mensagem pronta. É só enviar.';
+    }
+  });
+</script>
+</body>
+</html>
