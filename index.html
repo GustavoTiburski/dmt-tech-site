@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DMT Tech | Redes, segurança e infraestrutura para empresas</title>
-<meta name="description" content="Redes, firewall, monitoramento e suporte técnico para pequenas e médias empresas.">
+<title>DMT Tech | Monitoramento Zabbix e Auto XDR para empresas</title>
+<meta name="description" content="Monitoramento com Zabbix e Auto XDR para pequenas e médias empresas: implantação, templates sob medida, alertas e painéis.">
 <meta property="og:title" content="DMT Tech | Redes, segurança e infraestrutura">
 <meta property="og:description" content="Sua empresa conectada, protegida e sob controle.">
 <meta name="theme-color" content="#0f2340">
@@ -90,6 +90,9 @@ section.block .wrap{padding-top:120px;padding-bottom:120px}
 .card p{font-size:16px;line-height:1.6;color:var(--text)}
 .card ul{list-style:none;margin:0;padding:4px 0 0;display:flex;flex-direction:column;gap:10px}
 .card li{font-size:15px}.card li::before{content:"— ";color:var(--cyan-dk)}
+.card-xdr{border-color:var(--cyan)}
+.badge-lt{font-family:var(--mono);font-size:11px;padding:5px 9px;border-radius:999px;border:1px solid var(--cyan-dk);color:var(--cyan-dk)}
+.more{margin-top:auto;font-weight:600;font-size:15px;color:var(--navy)}
 
 /* XDR */
 .xdr{background-color:var(--ink)}
@@ -209,9 +212,9 @@ footer .right{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
 <section id="topo" class="hero dots dark">
   <div class="wrap">
     <div class="hero-copy">
-      <p class="eyebrow">// REDES · SEGURANÇA · INFRAESTRUTURA</p>
+      <p class="eyebrow">// MONITORAMENTO · ZABBIX · AUTO XDR</p>
       <h1>Sua empresa conectada, protegida e sob controle.</h1>
-      <p>Redes, firewall, monitoramento e suporte técnico para pequenas e médias empresas. Do cabo ao alerta, cuidamos da infraestrutura para você cuidar do negócio.</p>
+      <p>Monitoramento com Zabbix para pequenas e médias empresas: implantação, templates sob medida e alertas na hora certa. Você fica sabendo do problema antes do cliente reclamar.</p>
       <div class="ctas">
         <a class="btn btn-cyan" href="#contato">Solicitar diagnóstico gratuito</a>
         <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
@@ -242,7 +245,7 @@ footer .right{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
 <section class="strip" aria-label="Área de atendimento">
   <div class="wrap">
     <p>Atendimento presencial e remoto</p>
-    <ul><li>Redes</li><li>Firewall</li><li>Monitoramento</li><li>Suporte</li></ul>
+    <ul><li>Zabbix</li><li>Templates SNMP</li><li>Alertas</li><li>Grafana</li><li>Auto XDR</li></ul>
   </div>
 </section>
 
@@ -251,34 +254,35 @@ footer .right{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
     <div class="head">
       <div>
         <p class="eyebrow">// SERVIÇOS</p>
-        <h2>Tudo que sustenta a sua operação, em um só parceiro.</h2>
+        <h2>Monitoramento que avisa antes do problema virar parada.</h2>
       </div>
-      <p>Cada serviço funciona sozinho, mas eles foram pensados para trabalhar juntos: rede bem feita, protegida e observada o tempo todo.</p>
+      <p>Nosso foco é Zabbix: implantação, templates sob medida e alertas que chegam na hora certa. E, em breve, o Auto XDR para responder a ameaças sozinho.</p>
     </div>
     <div class="cards">
       <article class="card">
-        <div class="card-top"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c3d6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="17" width="6" height="5" rx="1"/><rect x="16" y="17" width="6" height="5" rx="1"/><path d="M12 7v5M5 17v-2.5h14V17M12 12v2.5"/></svg></div><span class="port">PORTA 01</span></div>
-        <h3>Configuração de redes</h3>
-        <p>Projeto, organização e configuração da rede cabeada e Wi-Fi da sua empresa.</p>
-        <ul><li>Switches, VLANs e roteamento</li><li>Wi-Fi corporativo e de visitantes</li><li>Failover entre links de internet</li></ul>
+        <div class="card-top"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c3d6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="7" rx="1.5"/><rect x="3" y="14" width="18" height="7" rx="1.5"/><path d="M7 6.5h.01M7 17.5h.01M11 6.5h6M11 17.5h6"/></svg></div><span class="port">PORTA 01</span></div>
+        <h3>Implantação do Zabbix</h3>
+        <p>Instalamos e configuramos o Zabbix na sua empresa, do servidor aos primeiros equipamentos monitorados.</p>
+        <ul><li>Servidor Zabbix e proxies para filiais</li><li>Servidores, links de internet e firewall</li><li>Descoberta automática de dispositivos</li></ul>
       </article>
       <article class="card">
-        <div class="card-top"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c3d6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></div><span class="port">PORTA 02</span></div>
-        <h3>Firewall e segurança</h3>
-        <p>Proteção de perímetro, acesso remoto seguro e regras que fazem sentido para o seu negócio.</p>
-        <ul><li>Implantação e ajuste de firewall</li><li>VPN para filiais e home office</li><li>Políticas de acesso e filtragem</li></ul>
+        <div class="card-top"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c3d6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6M13.5 4l-3 16"/></svg></div><span class="port">PORTA 02</span></div>
+        <h3>Templates sob medida</h3>
+        <p>Monitoramos o que o template padrão não cobre: nobreaks, switches e outros equipamentos via SNMP.</p>
+        <ul><li>Templates SNMP personalizados</li><li>Nobreaks, switches, câmeras e NVRs</li><li>Triggers ajustadas contra alarme falso</li></ul>
       </article>
       <article class="card">
-        <div class="card-top"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c3d6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M6 12h3l2-4 2 6 2-3h3M8 21h8M12 17v4"/></svg></div><span class="port">PORTA 03</span></div>
-        <h3>Monitoramento</h3>
-        <p>A gente fica de olho na sua infraestrutura e age antes do problema virar parada.</p>
-        <ul><li>Monitoramento com Zabbix</li><li>Alertas de link, servidor e nobreak</li><li>Painéis e relatórios mensais</li></ul>
+        <div class="card-top"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c3d6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div><span class="port">PORTA 03</span></div>
+        <h3>Alertas e painéis</h3>
+        <p>O alerta certo chega na pessoa certa, e a gestão enxerga a saúde da rede num painel só.</p>
+        <ul><li>Alertas no Teams, Telegram e e-mail</li><li>Dashboards no Grafana</li><li>Relatórios mensais de disponibilidade</li></ul>
       </article>
-      <article class="card">
-        <div class="card-top"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c3d6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="14" width="5" height="7" rx="1.5"/><rect x="17" y="14" width="5" height="7" rx="1.5"/><path d="M19.5 21c0 1-2 2-5 2"/></svg></div><span class="port">PORTA 04</span></div>
-        <h3>Suporte técnico</h3>
-        <p>Atendimento direto com quem entende, sem fila de call center e sem enrolação.</p>
-        <ul><li>Suporte remoto e presencial</li><li>Contratos mensais ou avulsos</li><li>Documentação da sua rede</li></ul>
+      <article class="card card-xdr">
+        <div class="card-top"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c3d6e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M13 7l-3 5h4l-3 5"/></svg></div><span class="badge-lt">EM DESENVOLVIMENTO</span></div>
+        <h3>Auto XDR</h3>
+        <p>Nossa plataforma própria que detecta, correlaciona e responde a ameaças automaticamente.</p>
+        <ul><li>Eventos de firewall, endpoint e Zabbix</li><li>Incidentes com contexto, sem ruído</li><li>Bloqueio e alerta na hora</li></ul>
+        <a class="more" href="#xdr">Saiba mais sobre o Auto XDR</a>
       </article>
     </div>
   </div>
