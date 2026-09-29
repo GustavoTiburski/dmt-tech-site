@@ -184,7 +184,26 @@ footer .right{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
   form{padding:24px}
   footer .right{align-items:flex-start}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.live i{animation:none}}
+/* ANIMAÇÕES */
+.status .row,.status hr,.status small{opacity:0;animation:rowin .45s ease forwards}
+.status .row:nth-of-type(2){animation-delay:.5s}.status .row:nth-of-type(3){animation-delay:.75s}
+.status .row:nth-of-type(4){animation-delay:1s}.status .row:nth-of-type(5){animation-delay:1.25s}
+.status hr,.status small{animation-delay:1.5s}
+@keyframes rowin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:0 14px 32px rgba(15,35,64,.10)}
+.process::before{transform:scaleX(0);transform-origin:left;transition:transform 1.4s ease}
+.process .dot{transform:scale(.6);opacity:0;transition:transform .45s cubic-bezier(.3,1.6,.5,1),opacity .3s ease}
+.process.in::before{transform:scaleX(1)}
+.process.in .dot{transform:none;opacity:1}
+.process.in li:nth-child(2) .dot{transition-delay:.35s}.process.in li:nth-child(3) .dot{transition-delay:.7s}.process.in li:nth-child(4) .dot{transition-delay:1.05s}
+@media (max-width:900px){.process::before{transform:scaleY(0);transform-origin:top}.process.in::before{transform:scaleY(1)}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}.live i{animation:none}
+  .status .row,.status hr,.status small{opacity:1;animation:none}
+  .card,.card:hover{transition:none;transform:none}
+  .process::before,.process .dot{transition:none;transform:none;opacity:1}
+}
 </style>
 </head>
 <body>
@@ -227,6 +246,16 @@ footer .right{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
       <svg class="topo" viewBox="0 0 620 520" fill="none" aria-hidden="true">
         <g stroke="#2f8fbf" stroke-opacity=".55" stroke-width="1.5">
           <line x1="310" y1="90" x2="130" y2="230"/><line x1="310" y1="90" x2="500" y2="210"/><line x1="130" y1="230" x2="210" y2="420"/><line x1="500" y1="210" x2="430" y2="430"/><line x1="210" y1="420" x2="430" y2="430"/><line x1="310" y1="90" x2="320" y2="290"/><line x1="320" y1="290" x2="130" y2="230"/><line x1="320" y1="290" x2="500" y2="210"/><line x1="320" y1="290" x2="210" y2="420"/><line x1="320" y1="290" x2="430" y2="430"/><line x1="500" y1="210" x2="590" y2="90" stroke-dasharray="4 6"/><line x1="130" y1="230" x2="30" y2="330" stroke-dasharray="4 6"/>
+        </g>
+        <circle cx="320" cy="290" r="44" fill="none" stroke="#2f8fbf" stroke-width="1.5"><animate attributeName="r" values="44;78" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;0" dur="3s" repeatCount="indefinite"/></circle>
+        <g fill="#8fd0ec">
+          <circle r="3.5"><animateMotion dur="2.4s" repeatCount="indefinite" path="M130 230 L320 290"/></circle>
+          <circle r="3.5"><animateMotion dur="2.8s" begin=".6s" repeatCount="indefinite" path="M500 210 L320 290"/></circle>
+          <circle r="3.5"><animateMotion dur="2.2s" begin="1.1s" repeatCount="indefinite" path="M210 420 L320 290"/></circle>
+          <circle r="3.5"><animateMotion dur="2.6s" begin=".3s" repeatCount="indefinite" path="M430 430 L320 290"/></circle>
+          <circle r="3.5"><animateMotion dur="2.4s" begin="1.6s" repeatCount="indefinite" path="M310 90 L320 290"/></circle>
+          <circle r="3"><animateMotion dur="3.2s" begin=".9s" repeatCount="indefinite" path="M590 90 L500 210"/></circle>
+          <circle r="3"><animateMotion dur="3.4s" begin="2s" repeatCount="indefinite" path="M30 330 L130 230"/></circle>
         </g>
         <circle cx="320" cy="290" r="44" fill="#1c3d6e" stroke="#2f8fbf" stroke-width="2"/>
         <text x="320" y="295" text-anchor="middle" fill="#fff" font-family="IBM Plex Mono, monospace" font-size="13" font-weight="500">CORE</text>
@@ -394,6 +423,16 @@ footer .right{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
   if (WHATSAPP) { const w = document.getElementById('wa-link'); w.href = 'https://wa.me/' + WHATSAPP; w.hidden = false; }
 
   document.getElementById('ano').textContent = new Date().getFullYear();
+
+  // Animações: pausa a rede do topo se o usuário prefere menos movimento; linha do processo ao rolar
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const topo = document.querySelector('svg.topo');
+  if (reduce && topo && topo.pauseAnimations) topo.pauseAnimations();
+  const proc = document.querySelector('.process');
+  if (proc) {
+    if (reduce || !('IntersectionObserver' in window)) proc.classList.add('in');
+    else new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { proc.classList.add('in'); o.disconnect(); } }), { threshold: .35 }).observe(proc);
+  }
 
   const btn = document.querySelector('.menu-btn');
   const menu = document.getElementById('menu');
