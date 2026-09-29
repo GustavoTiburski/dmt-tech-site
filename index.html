@@ -36,7 +36,7 @@ h2{font-size:clamp(30px,4vw,48px);line-height:1.1;font-weight:700;letter-spacing
 h3{font-size:22px;font-weight:600}
 p{margin:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 26px;border-radius:8px;font-weight:600;font-size:17px;text-decoration:none;border:0;cursor:pointer;font-family:var(--body)}
-.btn-cyan{background:var(--cyan);color:#0a1a30}.btn-cyan:hover{background:#3aa6d6}
+.btn-cyan{background:var(--cyan);color:#0a1a30;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}.btn-cyan:hover{background:#3aa6d6;transform:translateY(-3px) scale(1.05);box-shadow:0 12px 28px rgba(47,143,191,.45)}.btn-cyan:active{transform:scale(.98)}
 .btn-ghost{border:1px solid rgba(143,208,236,.5);color:#fff;font-weight:500}.btn-ghost:hover{background:rgba(143,208,236,.1)}
 .btn-deep{background:var(--deep);color:#fff;width:100%}.btn-deep:hover{background:var(--navy)}
 
@@ -202,6 +202,7 @@ footer .right{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
   html{scroll-behavior:auto}.live i{animation:none}
   .status .row,.status hr,.status small{opacity:1;animation:none}
   .card,.card:hover{transition:none;transform:none}
+  .btn-cyan,.btn-cyan:hover,.btn-cyan:active{transition:none;transform:none}
   .process::before,.process .dot{transition:none;transform:none;opacity:1}
 }
 </style>
